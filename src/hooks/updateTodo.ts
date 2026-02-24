@@ -6,7 +6,7 @@ const useUpdateTodo = () => {
   const result = useMutation({
     mutationFn: updateTodo,
     onSuccess: () => {
-      // 🔥 refetch todos
+      // refetch todos
       queryClient.invalidateQueries({
         queryKey: ["todos"],
       });

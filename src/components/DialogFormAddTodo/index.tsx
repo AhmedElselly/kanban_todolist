@@ -23,7 +23,7 @@ const statuses: TodoStatus[] = ["backlog", "inProgress", "review", "done"];
 
 export default function AddTodoDialog({ open, item, onClose }: Props) {
   const dispatch = useDispatch();
-
+  // create a todo item (card)
   const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -40,7 +40,9 @@ export default function AddTodoDialog({ open, item, onClose }: Props) {
     }
   }, [item]);
 
+  // creates a todo
   const createTodo = useCreateTodo();
+  // update a todo in case if the item wasn't null
   const updateTodo = useUpdateTodo();
 
   const handleSubmit = () => {
@@ -51,7 +53,7 @@ export default function AddTodoDialog({ open, item, onClose }: Props) {
       description,
       status,
     };
-
+    // if there is an item passed as prop update that item and return
     if (item) {
       updateTodo.mutate({
         id: newTodo.id,
@@ -62,7 +64,7 @@ export default function AddTodoDialog({ open, item, onClose }: Props) {
       onClose();
       return;
     }
-
+    // otherwise create a todo card and dispatch on success to redux
     createTodo.mutate(
       { ...newTodo },
       {

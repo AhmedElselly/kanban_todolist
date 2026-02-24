@@ -17,27 +17,33 @@ import RemoveDialogue from "../RemoveDialogue";
 export default function BoardThird() {
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
-  const [openRemove, setOpenRemove] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<Todo | null>(null);
+  const [open, setOpen] = useState(false); // opens a dialogue for edit
+  const [openRemove, setOpenRemove] = useState(false); // opens a dialogue for delete a card
+  const [selectedItem, setSelectedItem] = useState<Todo | null>(null); // selects an item
+  // sets a pointer to the active item that should be dragged by its id - very important
   const [activeDrag, setActiveDrag] = useState<any>(null);
 
+  // get todos from redux
   const todos = useSelector(
     (state: RootState) => state.todos.todos,
   ) as TodosColumns;
 
-  const resultCreate = useGetTodos();
-  const todosUnstructred = resultCreate?.data;
+  // get todo list from db.json file
+  const result = useGetTodos();
+  const todosUnstructred = result?.data;
 
+  // updates the single todo card on drag end
   const modifyTodo = useMoveTodo();
+  // removes a todo
   const deleteTodo = useDeleteTodo();
 
   useEffect(() => {
-    if (resultCreate.data) {
+    if (result.data) {
+      // groups the todos by status
       const grouped = groupTodos(todosUnstructred);
       dispatch(moveTodo(grouped));
     }
-  }, [resultCreate.data, dispatch]);
+  }, [result.data, dispatch]);
 
   const onDragHandler = (event: any) => {
     const { source } = event.operation;
@@ -85,6 +91,7 @@ export default function BoardThird() {
         {Object.entries(todos).map(([column, items], index) => {
           return (
             <Column key={column} id={column} index={index}>
+              {/* Column header */}
               <Typography
                 sx={{
                   color: "#000",
@@ -95,7 +102,7 @@ export default function BoardThird() {
               >
                 {column}
               </Typography>
-
+              {/* todo cards */}
               <Box className="ColumnContent">
                 {items?.map((item: any, index: number) => (
                   <Item
