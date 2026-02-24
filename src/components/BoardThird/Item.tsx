@@ -27,23 +27,25 @@ export default function Item({
         "&:active": { cursor: "grabbing" },
         width: 200,
         marginTop: 2,
-        backgroundColor: "#b0bec5",
+        backgroundColor: "#1E1E1E",
       }}
     >
       <CardContent>
-        <Typography variant="subtitle1">{item.title}</Typography>
+        <Typography variant="subtitle1" color="#fff">
+          {item.title}
+        </Typography>
         {item.description && (
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="#fff">
             {item.description}
           </Typography>
         )}
       </CardContent>
       <Box>
         <Button onClick={() => handleSelectItem(item)}>
-          <EditIcon sx={{ color: "#009688" }} />
+          <EditIcon sx={{ color: "#fff" }} />
         </Button>
         <Button onClick={() => handleDeleteItemShow(item)}>
-          <DeleteIcon sx={{ color: "#651fff" }} />
+          <DeleteIcon sx={{ color: "#fff" }} />
         </Button>
       </Box>
     </Card>
