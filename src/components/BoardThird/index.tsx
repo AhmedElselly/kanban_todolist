@@ -55,6 +55,8 @@ export default function BoardThird() {
     if (source?.type === "column") return;
     const movedTodos = move(todos, event);
     setActiveDrag(source);
+    // the next line of code was moved to onDragEndHandler func for performance
+    // modifyTodo.mutate({ id: source.id, status: source.sortable.group });
     dispatch(moveTodo(movedTodos));
   };
 
