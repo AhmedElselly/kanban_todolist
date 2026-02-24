@@ -83,6 +83,13 @@ using React Query and Redux Toolkit following scalable frontend architecture pri
 <strong>Redux Toolkit</strong>
 <ul>
 <li>Drag & drop interaction state to fit dnd library grouping model</li>
+<pre>
+ const [items, setItems] = useState({
+    A: ['A0', 'A1', 'A2'],
+    B: ['B0', 'B1'],
+    C: [],
+  });
+</pre>
 <li>Follow this example: <a href='https://codesandbox.io/p/sandbox/5qwvjf?file=%2Findex.js'>https://codesandbox.io/p/sandbox/5qwvjf?file=%2Findex.js</a></li>
 <li>Column organization</li>
 <li>UI-only state management</li>
