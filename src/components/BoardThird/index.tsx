@@ -119,12 +119,13 @@ export default function BoardThird() {
           );
         })}
       </div>
+      {/* for edit a single todo card */}
       <AddTodoDialog
         open={open}
         item={selectedItem}
         onClose={() => setOpen(false)}
       />
-
+      {/* for remove a single todo card */}
       <RemoveDialogue
         open={openRemove}
         onClose={() => setOpenRemove(false)}
