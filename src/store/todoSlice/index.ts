@@ -33,13 +33,7 @@ const initialState: TodosState = {
 
 export type CreateTodoPayload = Omit<Todo, "order">;
 
-// type TodosColumns = {
-//   backlog: Todo[];
-//   inProgress: Todo[];
-//   review: Todo[];
-//   done: Todo[];
-// };
-
+// grouping by key (status) - it creates an object where each TodoStatus key contains an array of todos belonging to that status
 export type TodosColumns = Record<TodoStatus, Todo[]>;
 
 interface AddTodoPayload {
