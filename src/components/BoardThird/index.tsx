@@ -85,7 +85,6 @@ export default function BoardThird() {
         {Object.entries(todos).map(([column, items], index) => {
           return (
             <Column key={column} id={column} index={index}>
-              {/* Column Header */}
               <Typography
                 sx={{
                   color: "#000",
@@ -97,7 +96,6 @@ export default function BoardThird() {
                 {column}
               </Typography>
 
-              {/* ⭐ Scrollable Area */}
               <Box className="ColumnContent">
                 {items?.map((item: any, index: number) => (
                   <Item
