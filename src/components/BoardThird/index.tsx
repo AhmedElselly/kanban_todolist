@@ -11,11 +11,14 @@ import type { RootState } from "../../store";
 import { Typography } from "@mui/material";
 import useMoveTodo from "../../hooks/moveTodo";
 import AddTodoDialog from "../DialogFormAddTodo";
+import useDeleteTodo from "../../hooks/deleteTodo";
+import RemoveDialogue from "../RemoveDialogue";
 
 export default function BoardThird() {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
+  const [openRemove, setOpenRemove] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Todo | null>(null);
 
   const todos = useSelector(
@@ -25,7 +28,8 @@ export default function BoardThird() {
   const resultCreate = useGetTodos();
   const todosUnstructred = resultCreate?.data;
 
-  const modifyMove = useMoveTodo();
+  const modifyTodo = useMoveTodo();
+  const deleteTodo = useDeleteTodo();
 
   useEffect(() => {
     if (resultCreate.data) {
@@ -44,13 +48,25 @@ export default function BoardThird() {
     if (source?.type === "column") return;
     const movedTodos = move(todos, event);
 
-    modifyMove.mutate({ id: source.id, status: source.sortable.group });
+    modifyTodo.mutate({ id: source.id, status: source.sortable.group });
     dispatch(moveTodo(movedTodos));
   };
 
   const handleSelectItem = (item: Todo) => {
     setOpen(true);
     setSelectedItem(item);
+  };
+
+  const handleDeleteItemShow = (item: Todo) => {
+    setOpenRemove(true);
+    setSelectedItem(item);
+  };
+
+  const handleDeleteItem = () => {
+    if (selectedItem) {
+      console.log({ selectedItem });
+      deleteTodo.mutate(selectedItem.id);
+    }
   };
 
   return (
@@ -76,6 +92,7 @@ export default function BoardThird() {
                     index={index}
                     column={column}
                     handleSelectItem={handleSelectItem}
+                    handleDeleteItemShow={handleDeleteItemShow}
                   />
                 );
               })}
@@ -87,6 +104,12 @@ export default function BoardThird() {
         open={open}
         item={selectedItem}
         onClose={() => setOpen(false)}
+      />
+
+      <RemoveDialogue
+        open={openRemove}
+        onClose={() => setOpenRemove(false)}
+        fn={handleDeleteItem}
       />
     </DragDropProvider>
   );

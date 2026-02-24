@@ -3,7 +3,13 @@ import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function Item({ item, index, column, handleSelectItem }: any) {
+export default function Item({
+  item,
+  index,
+  column,
+  handleSelectItem,
+  handleDeleteItemShow,
+}: any) {
   console.log({ itemId: item?.id });
   const { ref, isDragging } = useSortable({
     id: item?.id,
@@ -35,7 +41,7 @@ export default function Item({ item, index, column, handleSelectItem }: any) {
         <Button onClick={() => handleSelectItem(item)}>
           <EditIcon />
         </Button>
-        <Button>
+        <Button onClick={() => handleDeleteItemShow(item)}>
           <DeleteIcon />
         </Button>
       </Box>
