@@ -24,3 +24,8 @@ export const updateTodo = async ({ id, updates }: any) => {
 export const deleteTodo = async (id: string) => {
   await api.delete(`/todos/${id}`);
 };
+
+export const searchTodos = async (query: string) => {
+  const { data } = await api.get(`/todos?q=${query}`);
+  return data;
+};

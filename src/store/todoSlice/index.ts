@@ -60,43 +60,42 @@ export const todosSlice = createSlice({
       const newArr = [...state.todos.backlog, newTodo];
       state.todos.backlog = newArr;
     },
-
-    // remove todo
-    removeTodo: (state: any, action: PayloadAction<string>) => {
-      const newArr = state.todos.filter(
-        (todo: Todo) => todo.id !== action.payload,
-      );
-      state.todos = [...newArr];
-    },
-
-    // update single todo
-    updateTodo: (state: any, action: PayloadAction<Partial<Todo>>) => {
-      if (action.payload.id) {
-        const foundTodo = state.todos.find(
-          (todo: Todo) => todo.id === action.payload.id,
-        );
-
-        if (foundTodo) {
-          if (action.payload.title) {
-            foundTodo.title = action.payload.title;
-          }
-
-          if (action.payload.description) {
-            foundTodo.description = action.payload.description;
-          }
-        }
-      }
-    },
-
+    // move todo
     moveTodo: (state: any, action: PayloadAction<TodosColumns>) => {
       console.log({ payload: action.payload });
       state.todos = action.payload;
     },
+    // // remove todo
+    // removeTodo: (state: any, action: PayloadAction<string>) => {
+    //   const newArr = state.todos.filter(
+    //     (todo: Todo) => todo.id !== action.payload,
+    //   );
+    //   state.todos = [...newArr];
+    // },
+
+    // // update single todo
+    // updateTodo: (state: any, action: PayloadAction<Partial<Todo>>) => {
+    //   if (action.payload.id) {
+    //     const foundTodo = state.todos.find(
+    //       (todo: Todo) => todo.id === action.payload.id,
+    //     );
+
+    //     if (foundTodo) {
+    //       if (action.payload.title) {
+    //         foundTodo.title = action.payload.title;
+    //       }
+
+    //       if (action.payload.description) {
+    //         foundTodo.description = action.payload.description;
+    //       }
+    //     }
+    //   }
+    // },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTodo, moveTodo, removeTodo, updateTodo } = todosSlice.actions;
+export const { addTodo, moveTodo } = todosSlice.actions;
 
 const todosReducer = todosSlice.reducer;
 

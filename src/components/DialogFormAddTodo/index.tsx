@@ -15,7 +15,7 @@ import useUpdateTodo from "../../hooks/updateTodo";
 
 interface Props {
   open: boolean;
-  item: Todo | null;
+  item?: Todo | null;
   onClose: () => void;
 }
 
