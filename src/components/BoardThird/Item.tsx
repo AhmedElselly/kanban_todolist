@@ -1,9 +1,10 @@
 import { useSortable } from "@dnd-kit/react/sortable";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
-export default function Item({ item, index, column }: any) {
+export default function Item({ item, index, column, handleSelectItem }: any) {
   console.log({ itemId: item?.id });
-
   const { ref, isDragging } = useSortable({
     id: item?.id,
     index,
@@ -11,12 +12,6 @@ export default function Item({ item, index, column }: any) {
     accept: "item",
     group: column,
   });
-
-  // return (
-  //   <button className="Item" ref={ref} data-dragging={isDragging}>
-  //     {item.title}
-  //   </button>
-  // );
 
   return (
     <Card
@@ -30,13 +25,20 @@ export default function Item({ item, index, column }: any) {
     >
       <CardContent>
         <Typography variant="subtitle1">{item.title}</Typography>
-
         {item.description && (
           <Typography variant="body2" color="text.secondary">
             {item.description}
           </Typography>
         )}
       </CardContent>
+      <Box>
+        <Button onClick={() => handleSelectItem(item)}>
+          <EditIcon />
+        </Button>
+        <Button>
+          <DeleteIcon />
+        </Button>
+      </Box>
     </Card>
   );
 }

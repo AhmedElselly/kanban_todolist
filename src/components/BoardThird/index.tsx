@@ -3,16 +3,21 @@ import { move } from "@dnd-kit/helpers";
 import Column from "./Column";
 import Item from "./Item";
 import { useDispatch, useSelector } from "react-redux";
-import { moveTodo, type TodosColumns } from "../../store/todoSlice";
+import { moveTodo, type Todo, type TodosColumns } from "../../store/todoSlice";
 import useGetTodos from "../../hooks/getTodos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { groupTodos } from "../../helpers/rearrangeTodos";
 import type { RootState } from "../../store";
 import { Typography } from "@mui/material";
 import useMoveTodo from "../../hooks/moveTodo";
+import AddTodoDialog from "../DialogFormAddTodo";
 
 export default function BoardThird() {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<Todo | null>(null);
+
   const todos = useSelector(
     (state: RootState) => state.todos.todos,
   ) as TodosColumns;
@@ -43,6 +48,11 @@ export default function BoardThird() {
     dispatch(moveTodo(movedTodos));
   };
 
+  const handleSelectItem = (item: Todo) => {
+    setOpen(true);
+    setSelectedItem(item);
+  };
+
   return (
     <DragDropProvider onDragOver={onDragHandler}>
       <div className="Root">
@@ -65,6 +75,7 @@ export default function BoardThird() {
                     item={item}
                     index={index}
                     column={column}
+                    handleSelectItem={handleSelectItem}
                   />
                 );
               })}
@@ -72,6 +83,11 @@ export default function BoardThird() {
           );
         })}
       </div>
+      <AddTodoDialog
+        open={open}
+        item={selectedItem}
+        onClose={() => setOpen(false)}
+      />
     </DragDropProvider>
   );
 }
