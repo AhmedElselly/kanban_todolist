@@ -59,36 +59,10 @@ export const todosSlice = createSlice({
       const newArr = [...state.todos.backlog, newTodo];
       state.todos.backlog = newArr;
     },
-    // move todo
+    // move todo from list to another
     moveTodo: (state: any, action: PayloadAction<TodosColumns>) => {
       state.todos = action.payload;
     },
-    // // remove todo
-    // removeTodo: (state: any, action: PayloadAction<string>) => {
-    //   const newArr = state.todos.filter(
-    //     (todo: Todo) => todo.id !== action.payload,
-    //   );
-    //   state.todos = [...newArr];
-    // },
-
-    // // update single todo
-    // updateTodo: (state: any, action: PayloadAction<Partial<Todo>>) => {
-    //   if (action.payload.id) {
-    //     const foundTodo = state.todos.find(
-    //       (todo: Todo) => todo.id === action.payload.id,
-    //     );
-
-    //     if (foundTodo) {
-    //       if (action.payload.title) {
-    //         foundTodo.title = action.payload.title;
-    //       }
-
-    //       if (action.payload.description) {
-    //         foundTodo.description = action.payload.description;
-    //       }
-    //     }
-    //   }
-    // },
   },
 });
 
