@@ -10,7 +10,6 @@ export default function Item({
   handleSelectItem,
   handleDeleteItemShow,
 }: any) {
-  console.log({ itemId: item?.id });
   const { ref, isDragging } = useSortable({
     id: item?.id,
     index,
@@ -27,6 +26,8 @@ export default function Item({
         cursor: "grab",
         "&:active": { cursor: "grabbing" },
         width: 200,
+        marginTop: 2,
+        backgroundColor: "#b0bec5",
       }}
     >
       <CardContent>
@@ -39,10 +40,10 @@ export default function Item({
       </CardContent>
       <Box>
         <Button onClick={() => handleSelectItem(item)}>
-          <EditIcon />
+          <EditIcon sx={{ color: "#009688" }} />
         </Button>
         <Button onClick={() => handleDeleteItemShow(item)}>
-          <DeleteIcon />
+          <DeleteIcon sx={{ color: "#651fff" }} />
         </Button>
       </Box>
     </Card>

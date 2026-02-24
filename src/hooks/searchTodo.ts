@@ -5,7 +5,6 @@ const useSearchTodos = (search: string) => {
   const query = useQuery({
     queryKey: ["todos", search],
     queryFn: ({ queryKey }) => {
-      console.log({ queryKey });
       const [_, query] = queryKey;
       return searchTodos(query as string);
     },

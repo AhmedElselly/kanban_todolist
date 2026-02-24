@@ -3,11 +3,13 @@
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-inline: 50px;
+  align-items: flex-start;
+  height: calc(100vh - 144px);
 }
 
-.Column {
+/* .Column {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -17,11 +19,29 @@
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+} */
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  min-width: 250px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-height: 100%;
+}
+
+.ColumnContent {
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .Item {
+  margin-top: 10px;
   appearance: none;
-  background: #fff;
+  background: #504e4e;
   color: #666;
   padding: 12px 20px;
   border: none;
@@ -35,8 +55,6 @@
     inset 0px 0px 1px rgba(0, 0, 0, 0.4),
     0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),
     0px 1px calc(2px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.05);
-
-  width: 100px;
 }
 
 .Item[data-dragging="true"] {

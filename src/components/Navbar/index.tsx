@@ -20,7 +20,6 @@ export default function Navbar() {
   const [title, setTitle] = useState("");
 
   const { data } = useSearchTodos(title);
-  console.log({ data });
 
   useEffect(() => {
     if (data) {
@@ -36,32 +35,60 @@ export default function Navbar() {
 
   return (
     <Fragment>
-      <AppBar position="static" style={{ background: "#fff" }}>
-        <Toolbar sx={{ justifyContent: "space-around" }}>
-          <Typography variant="h6" sx={{ flexGrow: 1, color: "#000" }}>
+      <AppBar
+        position="static"
+        elevation={0}
+        sx={{
+          bgcolor: "background.paper",
+          borderBottom: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Toolbar
+          sx={{
+            maxWidth: 1400,
+            width: "100%",
+            mx: "auto",
+            gap: 2,
+          }}
+        >
+          {/* Title */}
+          <Typography
+            variant="h6"
+            sx={{
+              flexGrow: 1,
+              color: "text.primary",
+              fontWeight: 600,
+            }}
+          >
             Kanban Board
           </Typography>
 
-          <Box style={{ marginInlineEnd: 250 }}>
+          {/* Search (Desktop Only) */}
+          <Box
+            sx={{
+              display: { xs: "none", md: "block" },
+              minWidth: 260,
+            }}
+          >
             <TextField
-              id="search"
               label="Search"
-              variant="standard"
-              sx={{
-                borderRadius: 2,
-              }}
-              onChange={handleChange}
+              variant="outlined"
+              size="small"
+              fullWidth
               value={title}
-              name="title"
+              onChange={handleChange}
             />
           </Box>
 
+          {/* Add Button */}
           <Button
-            color="inherit"
             variant="outlined"
             onClick={() => setOpen(true)}
-            style={{
-              color: "#000",
+            sx={{
+              textTransform: "none",
+              fontWeight: 500,
+              borderRadius: 2,
             }}
           >
             Add Todo

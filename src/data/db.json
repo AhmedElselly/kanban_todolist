@@ -2,15 +2,63 @@
   "todos": [
     {
       "id": "1",
-      "title": "Design homepage333",
-      "description": "Include hero section",
+      "title": "Design homepage",
+      "description": "Include hero section and CTA",
+      "status": "backlog"
+    },
+    {
+      "id": "2",
+      "title": "Setup project structure",
+      "description": "Create folders and base layout",
+      "status": "inProgress"
+    },
+    {
+      "id": "3",
+      "title": "Implement login UI",
+      "description": "Email & password form",
+      "status": "backlog"
+    },
+    {
+      "id": "4",
+      "title": "Connect API authentication",
+      "description": "JWT login integration",
+      "status": "inProgress"
+    },
+    {
+      "id": "5",
+      "title": "Build Kanban columns",
+      "description": "Create draggable containers",
+      "status": "backlog"
+    },
+    {
+      "id": "6",
+      "title": "Fix drag animation bug",
+      "description": "Smooth drop transitions",
       "status": "review"
     },
     {
-      "id": "7369fb4a-83aa-41b2-a61e-357a4bcad85f",
-      "title": "awesome123",
-      "description": "hey we made awesome progress",
-      "status": "review"
+      "id": "7",
+      "title": "Deploy frontend",
+      "description": "Upload build to server",
+      "status": "done"
+    },
+    {
+      "id": "8",
+      "title": "Write documentation",
+      "description": "README and setup guide",
+      "status": "done"
+    },
+    {
+      "id": "9",
+      "title": "Improve mobile layout",
+      "description": "Responsive Kanban board",
+      "status": "backlog"
+    },
+    {
+      "id": "10",
+      "title": "Add search feature",
+      "description": "Filter todos by title",
+      "status": "backlog"
     }
   ]
 }

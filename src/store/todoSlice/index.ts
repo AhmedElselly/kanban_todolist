@@ -53,7 +53,6 @@ export const todosSlice = createSlice({
   reducers: {
     // add todo
     addTodo: (state: any, action: PayloadAction<AddTodoPayload>) => {
-      console.log({ payload: action.payload, state: state });
       const newTodo = {
         ...action.payload.newTodo,
       };
@@ -62,7 +61,6 @@ export const todosSlice = createSlice({
     },
     // move todo
     moveTodo: (state: any, action: PayloadAction<TodosColumns>) => {
-      console.log({ payload: action.payload });
       state.todos = action.payload;
     },
     // // remove todo

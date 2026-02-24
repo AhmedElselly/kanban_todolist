@@ -20,6 +20,7 @@
 
 body {
   background-color: var(--background-color);
+  overflow: hidden;
 }
 /* 
 body {

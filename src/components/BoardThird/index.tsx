@@ -8,7 +8,7 @@ import useGetTodos from "../../hooks/getTodos";
 import { useEffect, useState } from "react";
 import { groupTodos } from "../../helpers/rearrangeTodos";
 import type { RootState } from "../../store";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import useMoveTodo from "../../hooks/moveTodo";
 import AddTodoDialog from "../DialogFormAddTodo";
 import useDeleteTodo from "../../hooks/deleteTodo";
@@ -64,7 +64,6 @@ export default function BoardThird() {
 
   const handleDeleteItem = () => {
     if (selectedItem) {
-      console.log({ selectedItem });
       deleteTodo.mutate(selectedItem.id);
     }
   };
@@ -75,17 +74,21 @@ export default function BoardThird() {
         {Object.entries(todos).map(([column, items], index) => {
           return (
             <Column key={column} id={column} index={index}>
+              {/* Column Header */}
               <Typography
                 sx={{
                   color: "#000",
                   textAlign: "center",
                   textTransform: "uppercase",
+                  fontWeight: 600,
                 }}
               >
                 {column}
               </Typography>
-              {items?.map((item: any, index: number) => {
-                return (
+
+              {/* ⭐ Scrollable Area */}
+              <Box className="ColumnContent">
+                {items?.map((item: any, index: number) => (
                   <Item
                     key={item.id}
                     item={item}
@@ -94,8 +97,8 @@ export default function BoardThird() {
                     handleSelectItem={handleSelectItem}
                     handleDeleteItemShow={handleDeleteItemShow}
                   />
-                );
-              })}
+                ))}
+              </Box>
             </Column>
           );
         })}
