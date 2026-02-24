@@ -46,7 +46,7 @@
       "id": "8",
       "title": "Write documentation",
       "description": "README and setup guide",
-      "status": "done"
+      "status": "review"
     },
     {
       "id": "9",
@@ -58,7 +58,7 @@
       "id": "10",
       "title": "Add search feature",
       "description": "Filter todos by title",
-      "status": "backlog"
+      "status": "inProgress"
     },
     {
       "id": "0e1f30e2-bbb0-4583-9583-5ac7acd49671",

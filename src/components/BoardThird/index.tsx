@@ -20,6 +20,7 @@ export default function BoardThird() {
   const [open, setOpen] = useState(false);
   const [openRemove, setOpenRemove] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Todo | null>(null);
+  const [activeDrag, setActiveDrag] = useState<any>(null);
 
   const todos = useSelector(
     (state: RootState) => state.todos.todos,
@@ -47,9 +48,19 @@ export default function BoardThird() {
     // });
     if (source?.type === "column") return;
     const movedTodos = move(todos, event);
-
-    modifyTodo.mutate({ id: source.id, status: source.sortable.group });
+    setActiveDrag(source);
     dispatch(moveTodo(movedTodos));
+  };
+
+  const onDragEndHandler = () => {
+    if (!activeDrag) return;
+
+    modifyTodo.mutate({
+      id: activeDrag.id,
+      status: activeDrag.sortable.group,
+    });
+
+    setActiveDrag(null);
   };
 
   const handleSelectItem = (item: Todo) => {
@@ -69,7 +80,7 @@ export default function BoardThird() {
   };
 
   return (
-    <DragDropProvider onDragOver={onDragHandler}>
+    <DragDropProvider onDragOver={onDragHandler} onDragEnd={onDragEndHandler}>
       <div className="Root">
         {Object.entries(todos).map(([column, items], index) => {
           return (
