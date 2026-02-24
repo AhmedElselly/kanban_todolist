@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  --background-color: #242424f3;
+  --background-color: #bbb6b6f3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,6 +16,10 @@
 * {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color: var(--background-color);
 }
 /* 
 body {
