@@ -90,7 +90,7 @@ using React Query and Redux Toolkit following scalable frontend architecture pri
     C: [],
   });
 </pre>
-<li>Follow this example: <a href='https://codesandbox.io/p/sandbox/5qwvjf?file=%2Findex.js'>https://codesandbox.io/p/sandbox/5qwvjf?file=%2Findex.js</a></li>
+<li>Follow this example: <a href='https://codesandbox.io/p/sandbox/5qwvjf?file=%2FApp.js%3A9%2C2-13%2C6'>https://codesandbox.io/p/sandbox/5qwvjf?file=%2FApp.js%3A9%2C2-13%2C6</a></li>
 <li>Column organization</li>
 <li>UI-only state management</li>
 </ul>
