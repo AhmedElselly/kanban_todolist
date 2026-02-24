@@ -56,7 +56,7 @@ export default function BoardThird() {
     const movedTodos = move(todos, event);
     setActiveDrag(source);
     // the next line of code was moved to onDragEndHandler func for performance
-    // to not block the UI thread
+    // no api call should happen to not block the UI thread
     // modifyTodo.mutate({ id: source.id, status: source.sortable.group });
     dispatch(moveTodo(movedTodos));
   };
